@@ -1,0 +1,20 @@
+---
+
+- name: Iniciar chrony
+  ansible.builtin.systemd: 
+     state: started 
+     name: chronyd
+
+- name: Iniciar firewalld
+  systemd:
+     name: firewalld
+     state: started
+     enabled: true
+
+- name: Permitir acceso ntp
+  shell: firewall-cmd --add-service=ntp --permanent 
+
+- name: cambiar zona horaria
+  shell: timedatectl set-timezone "{{ zonahoraria }}"
+
+

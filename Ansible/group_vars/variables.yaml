@@ -1,0 +1,9 @@
+---
+
+zonahoraria: Europe/London
+rpms_nfs: ['nfs-utils','nfs4-acl-tools','wget']
+rpms_nfs_server: ['net-tools']
+rpms_kubernetes: ['kubelet','kubeadm','kubectl']
+k8s_workers: ['10.0.1.11','10.0.1.12']
+puertos_k8s: ['6443','2379-2380','10250-10252','10255']
+

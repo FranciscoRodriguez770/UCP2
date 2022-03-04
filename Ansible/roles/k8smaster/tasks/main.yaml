@@ -1,0 +1,4 @@
+- include_tasks: 01-config-firewall.yaml
+- include_tasks: 02-initialize-pods.yaml
+- include_tasks: 03-instalar-sdn.yaml
+- include_tasks: 04-desplegar-ingress.yaml

@@ -1,0 +1,7 @@
+---
+
+- name: copiar fichero hosts
+  ansible.builtin.copy:
+   src: files/hosts
+   dest: /etc/hosts
+   mode: u=rw,g=r,o=r

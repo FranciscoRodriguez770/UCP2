@@ -1,0 +1,11 @@
+---
+
+- name: join de los workers
+  hosts: k8sworkers
+  vars_files:
+    - "group_vars/variables.yaml"
+  gather_facts: false
+  become: true
+  roles:
+    - k8sworkers
+

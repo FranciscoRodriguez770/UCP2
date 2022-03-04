@@ -1,0 +1,29 @@
+---
+
+- name: iniciar servicio
+  systemd:
+    name: nfs-server
+    state: started
+    enabled: true
+
+- name: crear carpeta
+  ansible.builtin.file:
+   path: /srv/nfs
+   state: directory
+   mode: '0755'
+
+- name: mover fichero
+  ansible.builtin.copy:
+   src: files/exports
+   dest: /etc/exports
+   mode: u=rw,g=r,o=r
+ 
+- name: releer exports
+  shell: exportfs -r | exportfs -s
+
+- name: abrir firewall
+  shell: firewall-cmd --permanent --add-service=nfs | firewall-cmd --permanent --add-service=rpc-bind | firewall-cmd --permanent --add-service=mountd
+
+- name: recargar firewall
+  shell: firewall-cmd --reload
+

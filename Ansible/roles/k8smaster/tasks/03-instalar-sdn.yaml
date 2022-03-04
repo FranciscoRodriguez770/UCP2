@@ -1,0 +1,17 @@
+---
+
+- name: abrir puerto 8285 udp
+  command: firewall-cmd --permanent --add-port=8285/udp
+  
+- name: abrir puerto 8472 udp 
+  command: firewall-cmd --permanent --add-port=8472/udp
+
+- name: recargar firewall
+  command: firewall-cmd --reload 
+
+- name: instalar flannel
+  command: kubectl apply -f https://docs.projectcalico.org/manifests/canal.yaml
+ 
+- name: reiniciar master
+  reboot:
+    reboot_timeout: 3600

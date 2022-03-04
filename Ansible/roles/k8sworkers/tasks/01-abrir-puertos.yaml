@@ -1,0 +1,13 @@
+---
+
+- name: abrir 8285 udp
+  command: firewall-cmd --permanent --add-port=8285/udp
+
+- name: abrir 8472 udp
+  command: firewall-cmd --permanent --add-port=8472/udp
+
+- name: Abrir rangos k8s
+  shell: firewall-cmd --zone=public --permanent --add-port={10250,30000-32767}/tcp
+
+- name: recargar firewall
+  command: firewall-cmd --reload

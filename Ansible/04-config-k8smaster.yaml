@@ -1,0 +1,10 @@
+---
+
+- name: configurar e instalar k8smaster
+  hosts: k8smaster
+  vars_files:
+    - "group_vars/variables.yaml"
+  gather_facts: false
+  become: true
+  roles:
+    - k8smaster

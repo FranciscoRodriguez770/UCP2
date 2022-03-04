@@ -1,0 +1,21 @@
+---
+
+- name: copiar repo k8s
+  ansible.builtin.copy:
+   src: files/kubernetes.repo
+   dest: /etc/yum.repos.d/kubernetes.repo
+   mode: u=rw,g=r,o=r
+
+- name: instalar paquetes k8s
+  dnf:
+   name: "{{ rpms_kubernetes }}"
+   state: present
+   disable_excludes: 'kubernetes'
+  when: ansible_os_family == "RedHat"
+ 
+- name: iniciar servicio
+  systemd:
+   name: kubelet
+   state: started
+   enabled: true
+

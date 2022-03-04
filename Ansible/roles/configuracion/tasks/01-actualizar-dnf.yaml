@@ -1,0 +1,8 @@
+---
+
+   - name: Actualizar paquetes en las maquinas
+     dnf:
+      name: "*"
+      state: latest
+     become: true
+     when: ansible_os_family == "RedHat"

@@ -1,0 +1,4 @@
+10.0.1.10 kubemaster kubemaster.acme.es
+10.0.1.11 kubenode1 kubenode1.acme.es
+10.0.1.12 kubenode2 kubenode2.acme.es
+10.0.1.10 nfs nfs.acme.es

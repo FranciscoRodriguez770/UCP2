@@ -1,0 +1,7 @@
+---
+- name: reset config
+  command: kubeadm reset -f 
+
+- name: Join de los nodos
+  ansible.builtin.script: files/join_nodes.sh
+

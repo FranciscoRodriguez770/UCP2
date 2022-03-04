@@ -1,0 +1,12 @@
+---
+
+- name: instalar nfs
+  hosts: nfs
+  vars_files:
+    - "group_vars/variables.yaml"
+  gather_facts: true
+  become: true
+  roles:
+    - nfsServer
+
+

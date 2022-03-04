@@ -1,0 +1,13 @@
+---
+
+- name: configuracion comun a todos
+  hosts: all
+  vars_files:
+    - "group_vars/variables.yaml"
+  gather_facts: true
+  become: true
+  roles:
+    - configuracion
+
+
+

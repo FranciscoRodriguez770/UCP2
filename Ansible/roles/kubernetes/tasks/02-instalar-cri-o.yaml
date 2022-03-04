@@ -1,0 +1,26 @@
+---
+
+- name: descargar repo1
+  shell: wget -O /etc/yum.repos.d/devel:kubic:libcontainers:stable.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/CentOS_8_Stream/devel:kubic:libcontainers:stable.repo
+
+- name: descargar repo2
+  shell: wget -O /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:1.23:1.23.1.repo https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable:cri-o:1.23:1.23.1/CentOS_8_Stream/devel:kubic:libcontainers:stable:cri-o:1.23:1.23.1.repo  
+
+- name: copiar crio.conf
+  ansible.builtin.copy:
+   src: files/crio.conf
+   dest: /etc/modules-load.d/crio.conf
+   mode: u=rw,g=r,o=r
+
+- name: instalar paquetes  
+  dnf: 
+   name: cri-o
+   state: latest
+  when: ansible_os_family == "RedHat"
+
+- name: iniciar servicio
+  systemd:
+   name: crio
+   state: started
+   enabled: true
+  

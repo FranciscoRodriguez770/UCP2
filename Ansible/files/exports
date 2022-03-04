@@ -1,0 +1,8 @@
+#master 
+/srv/nfs 10.0.1.10(rw,sync)
+#worker1
+/srv/nfs 10.0.1.11(rw,sync)
+#worker2
+/srv/nfs 10.0.1.12(rw,sync)
+ 
+

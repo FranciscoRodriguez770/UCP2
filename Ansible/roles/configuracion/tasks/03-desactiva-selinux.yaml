@@ -1,0 +1,12 @@
+---
+
+ - name: Desactiva se linux
+   shell: sed -i s/=enforcing/=disabled/g /etc/selinux/config
+
+ - name: Desactiva AllowzoneDrifting
+   shell: sed -i s/AllowZoneDrifting=yes/AllowZoneDrifting=no/g /etc/firewalld/firewalld.conf
+
+ - name: Reinicia los equipos
+   reboot:
+     reboot_timeout: 3600
+

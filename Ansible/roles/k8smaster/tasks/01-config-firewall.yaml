@@ -1,0 +1,14 @@
+---
+- name: abrir puertos tcp
+  shell: firewall-cmd --permanent --add-port="{{ item }}"/tcp
+  loop: "{{ puertos_k8s }}" 
+
+- name: configurar kubeadm
+  shell: kubeadm config images pull
+
+- name: habilitar acceso a los workers
+  shell: firewall-cmd --permanent --add-rich-rule 'rule family=ipv4 source address="{{ item }}"/32 accept'  
+  loop: "{{ k8s_workers }}"
+
+- name: recargar firewall
+  shell: firewall-cmd --reload

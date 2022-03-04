@@ -1,0 +1,8 @@
+---
+
+- include_tasks: 01-actualizar-dnf.yaml
+- include_tasks: 02-cambio-zona-horaria.yaml
+- include_tasks: 03-desactiva-selinux.yaml
+- include_tasks: 04-instala-rpm-nfs.yaml
+- include_tasks: 05-copia-fichero-hosts.yaml
+

@@ -1,0 +1,10 @@
+---
+
+- name: configurar e instalar k8s
+  hosts: k8smaster, k8sworkers
+  vars_files:
+    - "group_vars/variables.yaml"
+  gather_facts: true
+  become: true
+  roles:
+    - kubernetes

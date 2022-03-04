@@ -1,0 +1,7 @@
+---
+
+- name: instalar paquetes nfs
+  dnf:
+   name: "{{ rpms_nfs }}"
+   state: latest
+  when: ansible_os_family == "RedHat"
