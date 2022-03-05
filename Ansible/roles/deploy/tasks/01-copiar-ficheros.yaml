@@ -1,0 +1,13 @@
+---
+- name: crear directorio
+  ansible.builtin.file:
+    path: /root/deploy
+    state: directory
+    mode: u=rw,g=r,o=r
+
+
+- name: copiar ficheros despliegue
+  ansible.builtin.copy:
+    src: deploy
+    dest: /root
+    mode: u=rw,g=r,o=r 

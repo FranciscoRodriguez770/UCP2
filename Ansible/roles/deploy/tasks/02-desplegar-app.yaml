@@ -1,0 +1,20 @@
+--- 
+
+- name: crear namespace
+  command: kubectl create namespace devops-tools
+
+- name: crear cluster role
+  command: kubectl apply -f /root/deploy/serviceAccount.yaml
+
+- name: crear persistent volume
+  command: kubectl create -f /root/deploy/volume.yaml 
+
+- name: desplegar ultima version docker jenkins
+  command: kubectl apply -f deployment.yaml
+
+- name: permitir acceso externo con un servicio nodeport al puerto 32000
+  command: kubectl appy -f service.yaml
+
+
+
+
