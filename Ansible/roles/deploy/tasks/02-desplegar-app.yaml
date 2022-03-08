@@ -10,10 +10,10 @@
   command: kubectl create -f /root/deploy/volume.yaml 
 
 - name: desplegar ultima version docker jenkins
-  command: kubectl apply -f deployment.yaml
+  command: kubectl apply -f /root/deploy/deployment.yaml
 
 - name: permitir acceso externo con un servicio nodeport al puerto 32000
-  command: kubectl appy -f service.yaml
+  command: kubectl apply -f /root/deploy/service.yaml
 
 
 
