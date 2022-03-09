@@ -8,13 +8,13 @@ resource "azurerm_linux_virtual_machine" "VMWorkers" {
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size_workers
     count               = length(var.workers)
-    admin_username      = "adminUsername"
+    admin_username      = var.ssh_user
     network_interface_ids = [azurerm_network_interface.myNic1[count.index + 1].id]
     disable_password_authentication = true
 
     admin_ssh_key {
-        username   = "adminUsername"
-        public_key = file("C:/Users/frodrigue53m/.ssh/k8s.pub")
+        username   = var.ssh_user
+        public_key = file(var.public_key_path)
     }
 
     os_disk {
@@ -50,13 +50,13 @@ resource "azurerm_linux_virtual_machine" "VMMaster" {
     resource_group_name = azurerm_resource_group.rg.name
     location            = azurerm_resource_group.rg.location
     size                = var.vm_size_master
-    admin_username      = "adminUsername"
+    admin_username      = var.ssh_user
     network_interface_ids = [ azurerm_network_interface.myNic1[0].id ]
     disable_password_authentication = true
 
     admin_ssh_key {
-        username   = "adminUsername"
-        public_key = file("C:/Users/frodrigue53m/.ssh/k8s.pub")
+        username   = var.ssh_user
+        public_key = file(var.public_key_path)
     }
 
     os_disk {
@@ -85,4 +85,3 @@ resource "azurerm_linux_virtual_machine" "VMMaster" {
         environment = "CP2"
     }
 }
-

@@ -10,11 +10,6 @@ variable "master" {
     default     = "k8smaster"
 }
 
-variable "location" {
-  type = string
-  description = "Región de Azure donde crearemos la infraestructura"
-  default = "West Europe"
-}
 variable "vm_size_workers" {
   type = string
   description = "Tamaño de las maquina virtuales workers"
